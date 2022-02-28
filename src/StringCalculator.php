@@ -14,16 +14,16 @@ class StringCalculator
 
         $correctNumber = true;
         $errorString = "";
-        $delimiters = ",\n";
-        $positionOfCustomDelimiterAndNumbersSeparator = -1;
+        $separators = ",\n";
+        $positionOfCustomSeparatorAndNumbersSeparator = -1;
 
         if($number[0] == "/" && $number[1] == "/")
         {
-            $positionOfCustomDelimiterAndNumbersSeparator = strpos($number, "\n");
-            $delimiters = substr($number, 2, $positionOfCustomDelimiterAndNumbersSeparator - 2);
+            $positionOfCustomSeparatorAndNumbersSeparator = strpos($number, "\n");
+            $separators = substr($number, 2, $positionOfCustomSeparatorAndNumbersSeparator - 2);
         }
 
-        $numbers = substr($number, $positionOfCustomDelimiterAndNumbersSeparator + 1);
+        $numbers = substr($number, $positionOfCustomSeparatorAndNumbersSeparator + 1);
 
         $badUseOfSeparatorsChecked = $this->checkOutBadUsedSeparators($numbers);
         if($badUseOfSeparatorsChecked[0])
@@ -43,7 +43,7 @@ class StringCalculator
             $errorString .= "Number expected but EOF found";
         }
 
-        $separatedNumber = preg_split('/[' . $delimiters . ']/', $numbers, -1, PREG_SPLIT_NO_EMPTY);
+        $separatedNumber = preg_split('/[' . $separators . ']/', $numbers, -1, PREG_SPLIT_NO_EMPTY);
         $sum = 0;
         $firstNegativeFound = false;
         for($i = 0; $i < count($separatedNumber); $i++)
@@ -56,7 +56,7 @@ class StringCalculator
                 {
                     $errorString .= "\n";
                 }
-                $errorString .= "'$delimiters' expected but '$incorrectSeparator' found at position " . strpos($numbers, $incorrectSeparator) . ".";
+                $errorString .= "'$separators' expected but '$incorrectSeparator' found at position " . strpos($numbers, $incorrectSeparator) . ".";
             }
             else if($separatedNumber[$i] < 0 && !$firstNegativeFound)
             {
