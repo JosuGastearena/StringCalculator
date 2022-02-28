@@ -22,28 +22,6 @@ class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function given_a_1_return_1(){
-
-        $stringCalculator = new StringCalculator();
-        $calculatedString = $stringCalculator->add("1");
-        $this->assertEquals(1, $calculatedString);
-
-    }
-
-    /**
-     * @test
-     */
-    public function given_max_2_numbers_return_their_sum(){
-
-        $stringCalculator = new StringCalculator();
-        $calculatedString = $stringCalculator->add("1.1,2.2");
-        $this->assertEquals(3.3, $calculatedString);
-
-    }
-
-    /**
-     * @test
-     */
     public function given_an_unknown_number_of_arguments_return_their_sum(){
 
         $stringCalculator = new StringCalculator();
