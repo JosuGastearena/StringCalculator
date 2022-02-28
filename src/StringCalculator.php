@@ -12,13 +12,12 @@ class StringCalculator
         }
 
         $delimiters = ",\n";
-        $positionOfCustomDelimiterAndNumbersSeparator = 0;
+        $positionOfCustomDelimiterAndNumbersSeparator = -1;
         if($number[0] == "/" && $number[1] == "/"){
             $positionOfCustomDelimiterAndNumbersSeparator = strpos($number, "\n");
             $delimiters = substr($number, 2, $positionOfCustomDelimiterAndNumbersSeparator - 1);
-
         }
-        $numbers = substr($number, $positionOfCustomDelimiterAndNumbersSeparator);
+        $numbers = substr($number, $positionOfCustomDelimiterAndNumbersSeparator + 1);
 
         $badUseOfSeparatorsChecked = $this->checkOutBadUsedSeparators($numbers);
         if($badUseOfSeparatorsChecked[0]){
@@ -32,10 +31,11 @@ class StringCalculator
         }
 
 
-        $separatedNumber = preg_split("/[$delimiters]/", $numbers);
+        $separatedNumber = preg_split('/[' . $delimiters . ']/', $numbers);
         $sum = 0;
         for($i = 0; $i < count($separatedNumber); $i++){
-            $sum += floatval($separatedNumber[$i]);
+
+            $sum += $separatedNumber[$i];
         }
         return $sum;
 

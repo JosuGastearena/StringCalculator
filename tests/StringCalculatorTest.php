@@ -75,8 +75,11 @@ class StringCalculatorTest extends TestCase
     {
 
         $stringCalculator = new StringCalculator();
-        $calculatedString = $stringCalculator->add("//sep\n1sep3sep4");
-        $this->assertEquals("8", $calculatedString);
+        $calculatedString = $stringCalculator->add("//;\n1;2");
+        $this->assertEquals("3", $calculatedString);
 
     }
+
+
+
 }
