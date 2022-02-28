@@ -30,7 +30,16 @@ class StringCalculatorTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function given_max_2_numbers_return_their_sum(){
 
+        $stringCalculator = new StringCalculator();
+        $calculatedString = $stringCalculator->add("1.1,2.2");
+        $this->assertEquals(3.3, $calculatedString);
+
+    }
 
 
 }

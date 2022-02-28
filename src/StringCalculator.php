@@ -9,7 +9,12 @@ class StringCalculator
         if(empty($number)){
             return 0;
         }
-            return $number;
+        $comaSeparatedNumber = explode(",", $number);
+        if(count($comaSeparatedNumber) == 1){
+            return $comaSeparatedNumber[0];
+        }
+
+        return $comaSeparatedNumber[0] + $comaSeparatedNumber[1];
 
     }
 
