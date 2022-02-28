@@ -19,4 +19,18 @@ class StringCalculatorTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function given_a_1_return_1(){
+
+        $stringCalculator = new StringCalculator();
+        $calculatedString = $stringCalculator->add("1");
+        $this->assertEquals(1, $calculatedString);
+
+    }
+
+
+
+
 }
