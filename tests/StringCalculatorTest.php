@@ -33,7 +33,7 @@ class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function given_an_unknown_number_of_arguments_with_coma_and_nextline_separators_return_their_sum(){
+    public function given_an_unknown_number_of_arguments_with_coma_and_newline_separators_return_their_sum(){
 
         $stringCalculator = new StringCalculator();
         $calculatedString = $stringCalculator->add("1.1,2.2\n3.3");
