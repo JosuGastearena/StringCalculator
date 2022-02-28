@@ -11,23 +11,31 @@ class StringCalculator
             return 0;
         }
 
-        $badUseOfSeparatorsChecked = $this->checkOutBadUsedSeparators($number);
+        $delimiters = ",\n";
+        $positionOfCustomDelimiterAndNumbersSeparator = 0;
+        if($number[0] == "/" && $number[1] == "/"){
+            $positionOfCustomDelimiterAndNumbersSeparator = strpos($number, "\n");
+            $delimiters = substr($number, 2, $positionOfCustomDelimiterAndNumbersSeparator - 1);
+
+        }
+        $numbers = substr($number, $positionOfCustomDelimiterAndNumbersSeparator);
+
+        $badUseOfSeparatorsChecked = $this->checkOutBadUsedSeparators($numbers);
         if($badUseOfSeparatorsChecked[0]){
             return "Number expected but " . $badUseOfSeparatorsChecked[1] . " found at position " . $badUseOfSeparatorsChecked[2];
         }
 
-        $separatorInLastPosition = $this->checkOutSeparatorInLastPosition($number);
+        $separatorInLastPosition = $this->checkOutSeparatorInLastPosition($numbers);
 
         if($separatorInLastPosition){
             return "Number expected but EOF found";
         }
 
 
-        $numberSeparatorsPrepared = str_replace("\n", ",", $number);
-        $comaSeparatedNumber = explode(",", $numberSeparatorsPrepared);
+        $separatedNumber = preg_split("/[$delimiters]/", $numbers);
         $sum = 0;
-        for($i = 0; $i < count($comaSeparatedNumber); $i++){
-            $sum += $comaSeparatedNumber[$i];
+        for($i = 0; $i < count($separatedNumber); $i++){
+            $sum += floatval($separatedNumber[$i]);
         }
         return $sum;
 
