@@ -15,7 +15,7 @@ class StringCalculator
         $positionOfCustomDelimiterAndNumbersSeparator = -1;
         if($number[0] == "/" && $number[1] == "/"){
             $positionOfCustomDelimiterAndNumbersSeparator = strpos($number, "\n");
-            $delimiters = substr($number, 2, $positionOfCustomDelimiterAndNumbersSeparator - 1);
+            $delimiters = substr($number, 2, $positionOfCustomDelimiterAndNumbersSeparator - 2);
         }
         $numbers = substr($number, $positionOfCustomDelimiterAndNumbersSeparator + 1);
 
@@ -34,6 +34,11 @@ class StringCalculator
         $separatedNumber = preg_split('/[' . $delimiters . ']/', $numbers, -1, PREG_SPLIT_NO_EMPTY);
         $sum = 0;
         for($i = 0; $i < count($separatedNumber); $i++){
+            if(!is_numeric($separatedNumber[$i])){
+                $incorrectSeparator = $this->findOutIncorrectSeparator($separatedNumber[$i]);
+                return "'$delimiters' expected but '$incorrectSeparator' found at position " . strpos($numbers, $incorrectSeparator) . ".";
+
+            }
             $sum += $separatedNumber[$i];
         }
         return $sum;
@@ -64,6 +69,21 @@ class StringCalculator
         else{
             return false;
         }
+    }
+
+    public function findOutIncorrectSeparator($separatedNumbersElement): String{
+
+        $permitedValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
+        $incorrectSeparator = "";
+        for($i = 0; $i < strlen($separatedNumbersElement); $i++){
+            if(!in_array($separatedNumbersElement[$i], $permitedValues)){
+                $incorrectSeparator = $separatedNumbersElement[$i];
+
+            }
+        }
+        return $incorrectSeparator;
+
+
     }
 
 }

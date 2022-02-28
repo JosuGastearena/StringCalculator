@@ -92,6 +92,18 @@ class StringCalculatorTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function given_an_unknown_number_of_arguments_with_custom_separator_bad_used_return_error_message()
+    {
+
+        $stringCalculator = new StringCalculator();
+        $calculatedString = $stringCalculator->add("//sep\n1sep2,1.5");
+        $this->assertEquals("'sep' expected but ',' found at position 5.", $calculatedString);
+
+    }
+
 
 
 }
