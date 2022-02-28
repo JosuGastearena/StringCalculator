@@ -80,6 +80,18 @@ class StringCalculatorTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function given_an_unknown_number_of_arguments_with_custom_separator_sep_return_their_sum()
+    {
+
+        $stringCalculator = new StringCalculator();
+        $calculatedString = $stringCalculator->add("//sep\n1sep2sep1.5");
+        $this->assertEquals("4.5", $calculatedString);
+
+    }
+
 
 
 }

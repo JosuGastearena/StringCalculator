@@ -31,10 +31,9 @@ class StringCalculator
         }
 
 
-        $separatedNumber = preg_split('/[' . $delimiters . ']/', $numbers);
+        $separatedNumber = preg_split('/[' . $delimiters . ']/', $numbers, -1, PREG_SPLIT_NO_EMPTY);
         $sum = 0;
         for($i = 0; $i < count($separatedNumber); $i++){
-
             $sum += $separatedNumber[$i];
         }
         return $sum;
