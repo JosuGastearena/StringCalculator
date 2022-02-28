@@ -112,7 +112,6 @@ class StringCalculatorTest extends TestCase
         $stringCalculator = new StringCalculator();
         $calculatedString = $stringCalculator->add("1.5,-2,-3");
         $this->assertEquals("Negative not allowed: -2, -3", $calculatedString);
-
     }
 
 

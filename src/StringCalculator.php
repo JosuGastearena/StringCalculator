@@ -100,7 +100,6 @@ class StringCalculator
             }
             }
         return $negativeList;
-
     }
 
 
