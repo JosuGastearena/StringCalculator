@@ -41,6 +41,16 @@ class StringCalculatorTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function given_an_unknown_number_of_arguments_with_coma_and_nextline_separators_bad_used_return_error_message(){
+
+        $stringCalculator = new StringCalculator();
+        $calculatedString = $stringCalculator->add("1.1,2.2,\n3.3");
+        $this->assertEquals("Number expected but \n found at position 8", $calculatedString);
+
+    }
 
 
 
