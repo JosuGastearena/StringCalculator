@@ -10,11 +10,12 @@ class StringCalculator
             return 0;
         }
         $comaSeparatedNumber = explode(",", $number);
-        if(count($comaSeparatedNumber) == 1){
-            return $comaSeparatedNumber[0];
+        $suma = 0;
+        for($i = 0; $i < count($comaSeparatedNumber); $i++){
+            $suma += $comaSeparatedNumber[$i];
         }
 
-        return $comaSeparatedNumber[0] + $comaSeparatedNumber[1];
+        return $suma;
 
     }
 
