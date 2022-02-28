@@ -29,10 +29,6 @@ class StringCalculator
         if($badUseOfSeparatorsChecked[0])
         {
             $correctNumber = false;
-            if(!empty($errorString))
-            {
-                $errorString .= "\n";
-            }
             $errorString .= "Number expected but " . $badUseOfSeparatorsChecked[1] . " found at position " . $badUseOfSeparatorsChecked[2];
         }
 
@@ -120,7 +116,6 @@ class StringCalculator
 
     public function findOutIncorrectSeparator($separatedNumbersElement): String
     {
-
         $permitedValues = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
         $incorrectSeparator = "";
         for($i = 0; $i < strlen($separatedNumbersElement); $i++)
