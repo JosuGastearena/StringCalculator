@@ -104,6 +104,17 @@ class StringCalculatorTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function given_an_unknown_number_of_arguments_with_negative_values_return_error_message()
+    {
+        $stringCalculator = new StringCalculator();
+        $calculatedString = $stringCalculator->add("1.5,-2,-3");
+        $this->assertEquals("Negative not allowed: -2, -3", $calculatedString);
+
+    }
+
 
 
 }

@@ -37,7 +37,10 @@ class StringCalculator
             if(!is_numeric($separatedNumber[$i])){
                 $incorrectSeparator = $this->findOutIncorrectSeparator($separatedNumber[$i]);
                 return "'$delimiters' expected but '$incorrectSeparator' found at position " . strpos($numbers, $incorrectSeparator) . ".";
-
+            }
+            else if($separatedNumber[$i] < 0){
+                $negativeList = $this->manageNegativeNumbers($separatedNumber, $i);
+                return "Negative not allowed: $negativeList";
             }
             $sum += $separatedNumber[$i];
         }
@@ -85,5 +88,20 @@ class StringCalculator
 
 
     }
+
+    public function manageNegativeNumbers($separatedNumber, $index): String{
+        $negativeList = "";
+        for($i = $index; $i < count($separatedNumber); $i++){
+            if($separatedNumber[$i] < 0){
+                if(!empty($negativeList)){
+                    $negativeList .= ", ";
+                }
+                $negativeList .= $separatedNumber[$i];
+            }
+            }
+        return $negativeList;
+
+    }
+
 
 }
