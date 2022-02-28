@@ -56,4 +56,16 @@ class StringCalculatorTest extends TestCase
 
     }
 
+    /**
+     * @test
+     */
+    public function given_an_unknown_number_of_arguments_with_separator_in_last_position_return_error_message()
+    {
+
+        $stringCalculator = new StringCalculator();
+        $calculatedString = $stringCalculator->add("1,3,");
+        $this->assertEquals("Number expected but EOF found", $calculatedString);
+
+    }
+
 }

@@ -16,6 +16,13 @@ class StringCalculator
             return "Number expected but " . $badUseOfSeparatorsChecked[1] . " found at position " . $badUseOfSeparatorsChecked[2];
         }
 
+        $separatorInLastPosition = $this->checkOutSeparatorInLastPosition($number);
+
+        if($separatorInLastPosition){
+            return "Number expected but EOF found";
+        }
+
+
         $numberSeparatorsPrepared = str_replace("\n", ",", $number);
         $comaSeparatedNumber = explode(",", $numberSeparatorsPrepared);
         $sum = 0;
@@ -41,6 +48,15 @@ class StringCalculator
             return [true, ",", (strpos($number, "\n,") + 1)];
         }
         return [false, "", ""];
+    }
+
+    public function checkOutSeparatorInLastPosition($number): bool{
+        if($number[strlen($number) - 1] == "," || $number[strlen($number) - 1] == "\n"){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
 }
