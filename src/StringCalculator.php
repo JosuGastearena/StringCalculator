@@ -11,9 +11,9 @@ class StringCalculator
             return 0;
         }
 
-        $badUseOfDelimitersChecked = $this->checkOutBadUsedDelimiters($number);
-        if($badUseOfDelimitersChecked[0]){
-            return "Number expected but " . $badUseOfDelimitersChecked[1] . " found at position " . $badUseOfDelimitersChecked[2];
+        $badUseOfSeparatorsChecked = $this->checkOutBadUsedSeparators($number);
+        if($badUseOfSeparatorsChecked[0]){
+            return "Number expected but " . $badUseOfSeparatorsChecked[1] . " found at position " . $badUseOfSeparatorsChecked[2];
         }
 
         $numberSeparatorsPrepared = str_replace("\n", ",", $number);
@@ -26,14 +26,8 @@ class StringCalculator
 
     }
 
-
-
-
-
-
-
-
-    public function checkOutBadUsedDelimiters($number): array{
+    public function checkOutBadUsedSeparators($number): array
+    {
         if(str_contains($number, ",,")){
             return [true, ",", (strpos($number, ",,") + 1)];
         }
