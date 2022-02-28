@@ -108,10 +108,8 @@ class StringCalculator
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
+
     }
 
     public function findOutIncorrectSeparator($separatedNumbersElement): String
