@@ -9,13 +9,13 @@ class StringCalculator
         if(empty($number)){
             return 0;
         }
-        $comaSeparatedNumber = explode(",", $number);
-        $suma = 0;
+        $numberSeparatorsPrepared = str_replace("\n", ",", $number);
+        $comaSeparatedNumber = explode(",", $numberSeparatorsPrepared);
+        $sum = 0;
         for($i = 0; $i < count($comaSeparatedNumber); $i++){
-            $suma += $comaSeparatedNumber[$i];
+            $sum += $comaSeparatedNumber[$i];
         }
-
-        return $suma;
+        return $sum;
 
     }
 
